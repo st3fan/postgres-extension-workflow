@@ -31,7 +31,6 @@ jobs:
         run: USE_PGXS=1 make
       - name: Test Extension
         run: |
-          echo "$GITHUB_WORKSPACE"
-          ls -l "$GITHUB_WORKSPACE"
+          su postgres -c 'chown -R postgres:postgres .'
           su postgres -c 'PGUSER=postgres USE_PGXS=1 make installcheck'
 
