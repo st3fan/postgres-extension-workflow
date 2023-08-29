@@ -1,0 +1,12 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: debian:buster
+    steps:
+      - name: foo
+        run: lsb_release -a
+
