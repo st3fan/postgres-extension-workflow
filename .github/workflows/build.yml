@@ -8,5 +8,5 @@ jobs:
     container: debian:buster
     steps:
       - name: foo
-        run: lsb_release -a
+        run: ls -l /
 
