@@ -29,4 +29,6 @@ jobs:
           persist-credentials: false
       - name: Build Extension
         run: USE_PGXS=1 make
+      - name: Test Extension
+        run: USE_PGXS=1 make installcheck
 
