@@ -8,5 +8,5 @@ jobs:
     container: debian:buster
     steps:
       - name: foo
-        run: ls -l /
+        run: cat /etc/apt/sources.list
 
