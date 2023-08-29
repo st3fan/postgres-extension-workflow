@@ -22,9 +22,10 @@ jobs:
           su -c 'apt-get -y install postgresql-13'
       - name: Start Postgres
         run: pg_ctlcluster 13 main start
-      - name: Checkout
+      - name: Checkout Extension
         uses: actions/checkout@v3
         with:
           persist-credentials: false
-
+      - name: Build Extension
+        run: USE_PGXS=1 make
 
