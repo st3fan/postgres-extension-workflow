@@ -7,6 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     container: debian:buster
     steps:
+      - name: Setup Debian
+        run: |
+          su -c 'apt update'
+          su -c 'apt install -y lsb-release wget gnupg'
+          su -c 'apt install -y build-essential'
       - name: Install Postgres
         run: |
           su -c 'apt update'
@@ -15,4 +20,11 @@ jobs:
           su -c 'wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -'
           su -c 'apt-get update'
           su -c 'apt-get -y install postgresql-13'
+      - name: Start Postgres
+        run: pg_ctlcluster 13 main start
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
 
